@@ -92,7 +92,7 @@ export const readRecbyName = async (req:Request, res:Response) =>{
     try{
         await client.connect()
 
-        const {name} = req.body
+        const {name} = req.params
 
         const student = await db.findOne({name})
         res.status(statusCode.OK).json({
@@ -111,7 +111,7 @@ export const readRecbyScore = async (req:Request, res:Response) =>{
     try{
         await client.connect()
 
-        const {examscore} = req.body
+        const {examscore} = req.params
 
         const student = await db.findOne({examscore})
 
@@ -131,9 +131,9 @@ export const readRecbyCourse = async (req:Request, res:Response) =>{
     try {
         await client.connect()
 
-        const {course} = req.body
-
-        const student = await db.findOne({course})
+        const {course} = req.params
+        
+        const student = await db.findOne({course},{$in:{course}})
 
         res.status(statusCode.OK).json({
             message:"reading record by course",

@@ -7,8 +7,8 @@ router.route('/create-student').post(createStdntRec)
 router.route('/read-student').get(readStdntRec)
 router.route('/update-student/:studentID').patch(updateStdntRec)
 router.route('/delete-student/:studentID').delete(deleteStdntRec)
-router.route('/student-name').get(readRecbyName)
-router.route('/student-score').get(readRecbyScore)
-router.route('/student-course').get(readRecbyCourse)
+router.route('/student-name/:name').get(readRecbyName)
+router.route('/student-score/:examscore').get(readRecbyScore)
+router.route('/student-course/:course').get(readRecbyCourse)
 
 export default router;
